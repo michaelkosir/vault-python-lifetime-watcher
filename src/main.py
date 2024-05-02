@@ -43,9 +43,12 @@ async def main():
     )
 
     # build relationship
+    # as when an auth token is regenerated
+    # secrets will need to be recreated/reloaded
     aw.watchers.append(sw)
     vault.watcher = aw
 
+    # perform main async logic
     while True:
         printG(db.username, db.password, vault.client.token)
         await asyncio.sleep(1)
